@@ -37,7 +37,6 @@ class UsersController < ApplicationController
     end
 
     get '/users/:slug' do
-        
         if params.empty?
             redirect '/login'
         else      
