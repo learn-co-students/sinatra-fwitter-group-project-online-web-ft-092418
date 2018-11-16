@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
       redirect "/tweets/new"
     else
       @tweet = current_user(session).tweets.create(content: params[:content])
-  #    binding.pry
+    #  binding.pry
       redirect "/tweets/#{@tweet.id}"
     end
   end
@@ -33,12 +33,13 @@ class TweetsController < ApplicationController
 
   get '/tweets/:id' do
   #  binding.pry
-    @user = current_user(session)
-    @tweet = Tweet.find_by_id(params[:id])
+
     #&& @user.id == @tweet.user.id
-    if is_logged_in?(session) && @user.id == @tweet.user_id
+    if is_logged_in?(session)
+      @user = current_user(session)
+      @tweet = Tweet.find_by_id(params[:id])
   #    binding.pry
-      erb :"/tweets/show" 
+      erb :"/tweets/show"
 
     else
 #     binding.pry
