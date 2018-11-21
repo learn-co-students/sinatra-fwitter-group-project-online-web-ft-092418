@@ -1,0 +1,17 @@
+<% if session[:temp_errors] %>
+        <% session[:temp_errors].each do |msg| %>
+            <p style="color: red;"><%= msg %></p>
+        <% end %>
+        <% session[:temp_errors] = nil %>
+    <% end %>
+
+<h2>TWEETS:</h2>
+
+<h4>Welcome, <%= @user.username %>!</h4>
+
+<% @tweets.reverse_each do |t| %>
+    <h4>------------------------</h4>
+    <h4><%= t.user.username %> wrote...</h4>
+    
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/tweets/<%= t.id %>"><%= t.content %></a></p>
+<% end %>

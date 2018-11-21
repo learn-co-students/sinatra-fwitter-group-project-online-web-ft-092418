@@ -1,0 +1,9 @@
+<h2>TWEETS:</h2>
+
+<h4>Welcome, <%= @user.username %>!</h4>
+
+<% @user.tweets.reverse_each do |t| %>
+    <h4>------------------------</h4>
+    <h4><%= t.user.username %> wrote...</h4>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= t.content %></p>
+<% end %>
